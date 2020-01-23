@@ -2,29 +2,31 @@
 
 public class GameLocalData: IServiceInit, ISaveEntity
 {
+
     public GameLocalData()
     {
         ResetData();
     }
 
-    public Language Language { get; set ; }
+    public Language LanguageType { get; set ; }
 
     public void Init()
     {
-        ClassContainer.GetService<SaveDataManager>().AddSaveEntity(this);
+        ISaveManager saveManager = ClassContainer.GetService<ISaveManager>();
+        saveManager.RegisterSaveClass(this);
     }
     public void Dispose()
     {
         
     }
 
-    public void SetSaveData()
+    public void SetSaveData(SaveDataManager saveManager)
     {
-        ClassContainer.GetService<SaveDataManager>().SetSaveData(Language);
+        saveManager.SetSaveData(LanguageType);
     }
-    public void GetSaveData()
+    public void GetSaveData(SaveDataManager saveManager)
     {
-        Language = ClassContainer.GetService<SaveDataManager>().GetdData<Language>();
+        LanguageType = saveManager.GetData<Language>();
     }
 
 

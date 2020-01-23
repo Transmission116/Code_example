@@ -1,6 +1,6 @@
 ﻿
 public interface ISaveEntity
 {
-    void SetSaveData();
-    void GetSaveData();
+    void SetSaveData(SaveDataManager saveManager);
+    void GetSaveData(SaveDataManager saveManager);
 }

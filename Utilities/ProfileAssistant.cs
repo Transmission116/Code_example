@@ -36,7 +36,7 @@ public class ProfileAssistant {
     }
 
 
-    public static void LoadListFromRes<T>(ref List<T> ml_List, string path) where T : UnityEngine.Object
+    public static void LoadListFromRes<T>(List<T> ml_List, string path) where T : UnityEngine.Object
     {
         T[] obj = Resources.LoadAll<T>(path);
 

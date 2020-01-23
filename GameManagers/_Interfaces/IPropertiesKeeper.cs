@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 
 
-public interface IPropertiesKeeper<T>{
+public interface IPropertiesKeeper<T> {
 	T Load();
 	void Save(T data);
 }

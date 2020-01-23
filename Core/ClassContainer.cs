@@ -43,6 +43,10 @@ public abstract class ClassContainer
             throw new Exception("Service Update" + service.ToString() + " have not implemented interface: " + typeof(T));
         }
     }
+    public static IDictionary<Type, IServiceInit> GetServiceList()
+    {
+        return services;
+    }
 
 
     public static void InitServices()

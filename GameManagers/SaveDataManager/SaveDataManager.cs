@@ -12,7 +12,6 @@ public class SaveDataManager: IServiceInit, ISaveManager
 
     public void Init()
     {
-        
         saveEntityHolder = new List<ISaveEntity>();
         saveFolderPath = Path.Combine(Application.streamingAssetsPath, Constants.SAVE_DATA_FOLDER);
     }
@@ -21,11 +20,16 @@ public class SaveDataManager: IServiceInit, ISaveManager
         
     }
 
+    public void RegisterSaveClass(ISaveEntity saveEntity)
+    {
+        saveEntityHolder.Add(saveEntity);
+    }
+
     public void SaveData()
     {
         foreach (var item in saveEntityHolder)
         {
-            item.SetSaveData();
+            item.SetSaveData(this);
         }
     }
 
@@ -33,16 +37,11 @@ public class SaveDataManager: IServiceInit, ISaveManager
     {
         foreach (var item in saveEntityHolder)
         {
-            item.GetSaveData();
+            item.GetSaveData(this);
         }
     }
 
-    public void AddSaveEntity(ISaveEntity saveEntity)
-    {
-        saveEntityHolder.Add(saveEntity);
-    }
-
-    public T GetdData<T>()
+    public T GetData<T>()
     {
         T loadObject = default;
         JSONPropertiesKeeper<T> jSONPropertiesKeeper = new JSONPropertiesKeeper<T>(saveFolderPath);
@@ -55,4 +54,5 @@ public class SaveDataManager: IServiceInit, ISaveManager
         JSONPropertiesKeeper<T> jSONPropertiesKeeper = new JSONPropertiesKeeper<T>(saveFolderPath);
         jSONPropertiesKeeper.Save(data);
     }
+
 }
