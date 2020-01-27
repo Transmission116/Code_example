@@ -13,7 +13,7 @@ public class GameLocalData: IServiceInit, ISaveEntity
     public void Init()
     {
         ISaveManager saveManager = ClassContainer.GetService<ISaveManager>();
-        saveManager.RegisterSaveClass(this);
+        saveManager.RegisterSaveEntity(this);
     }
     public void Dispose()
     {

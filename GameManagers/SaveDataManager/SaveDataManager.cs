@@ -20,7 +20,7 @@ public class SaveDataManager: IServiceInit, ISaveManager
         
     }
 
-    public void RegisterSaveClass(ISaveEntity saveEntity)
+    public void RegisterSaveEntity(ISaveEntity saveEntity)
     {
         saveEntityHolder.Add(saveEntity);
     }
