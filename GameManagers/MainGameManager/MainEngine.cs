@@ -51,35 +51,25 @@ public class MainEngine : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Instance == this)
-        {
-            if (LateUpdateEvent != null)
-                LateUpdateEvent();
-        }
+        if (LateUpdateEvent != null)
+            LateUpdateEvent();
     }
 
     private void FixedUpdate()
     {
-        if (Instance == this)
-        {
-            if (FixedUpdateEvent != null)
-                FixedUpdateEvent();
-        }
+        if (FixedUpdateEvent != null)
+            FixedUpdateEvent();
     }
 
     private void OnDestroy()
     {
-        if (Instance == this)
-            ClassContainer.Dispose();
+        ClassContainer.Dispose();
     }
 
 
     private void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
     {
-        if (Instance == this)
-        {
-            if (OnLevelWasLoadedEvent != null)
-                OnLevelWasLoadedEvent(arg0.buildIndex);
-        }
+        if (OnLevelWasLoadedEvent != null)
+            OnLevelWasLoadedEvent(arg0.buildIndex);
     }
 }

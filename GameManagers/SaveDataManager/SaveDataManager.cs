@@ -54,5 +54,4 @@ public class SaveDataManager: IServiceInit, ISaveManager
         JSONPropertiesKeeper<T> jSONPropertiesKeeper = new JSONPropertiesKeeper<T>(saveFolderPath);
         jSONPropertiesKeeper.Save(data);
     }
-
 }
